@@ -1,0 +1,487 @@
+{
+  "@@last_modified": "2021-01-22T16:08:02.052600",
+  "addAddress": "新增收货地址",
+  "@addAddress": {
+    "description": "新增收货地址",
+    "type": "text",
+    "placeholders": {}
+  },
+  "payment": "立即支付",
+  "@payment": {
+    "description": "立即支付",
+    "type": "text",
+    "placeholders": {}
+  },
+  "confirmOrder": "确认订单",
+  "@confirmOrder": {
+    "description": "确认订单",
+    "type": "text",
+    "placeholders": {}
+  },
+  "allSelect": "全选",
+  "@allSelect": {
+    "description": "全选",
+    "type": "text",
+    "placeholders": {}
+  },
+  "viewAllOrder": "查看全部订单",
+  "@viewAllOrder": {
+    "description": "查看全部订单",
+    "type": "text",
+    "placeholders": {}
+  },
+  "title": "云禾一方",
+  "@title": {
+    "description": "云禾一方",
+    "type": "text",
+    "placeholders": {}
+  },
+  "footprint": "足迹",
+  "@footprint": {
+    "description": "足迹",
+    "type": "text",
+    "placeholders": {}
+  },
+  "defaultText": "默认",
+  "@defaultText": {
+    "description": "默认",
+    "type": "text",
+    "placeholders": {}
+  },
+  "prepayment": "待付款",
+  "@prepayment": {
+    "description": "待付款",
+    "type": "text",
+    "placeholders": {}
+  },
+  "predelivery": "待发货",
+  "@predelivery": {
+    "description": "待发货",
+    "type": "text",
+    "placeholders": {}
+  },
+  "prereceiving": "待收货",
+  "@prereceiving": {
+    "description": "待收货",
+    "type": "text",
+    "placeholders": {}
+  },
+  "preevaluation": "待评价",
+  "@preevaluation": {
+    "description": "待评价",
+    "type": "text",
+    "placeholders": {}
+  },
+  "aftersales": "退货/售后",
+  "@aftersales": {
+    "description": "退货/售后",
+    "type": "text",
+    "placeholders": {}
+  },
+  "deliveryAddress": "收货地址",
+  "@deliveryAddress": {
+    "description": "收货地址",
+    "type": "text",
+    "placeholders": {}
+  },
+  "commonTools": "常用工具",
+  "@commonTools": {
+    "description": "常用工具",
+    "type": "text",
+    "placeholders": {}
+  },
+  "serivcesTel": "客服电话",
+  "@serivcesTel": {
+    "description": "客服电话",
+    "type": "text",
+    "placeholders": {}
+  },
+  "inviteFriends": "邀请好友",
+  "@inviteFriends": {
+    "description": "邀请好友",
+    "type": "text",
+    "placeholders": {}
+  },
+  "feedback": "意见反馈",
+  "@feedback": {
+    "description": "意见反馈",
+    "type": "text",
+    "placeholders": {}
+  },
+  "favorites": "收藏夹",
+  "@favorites": {
+    "description": "收藏夹",
+    "type": "text",
+    "placeholders": {}
+  },
+  "attention": "关注店铺",
+  "@attention": {
+    "description": "关注店铺",
+    "type": "text",
+    "placeholders": {}
+  },
+  "balance": "余额",
+  "@balance": {
+    "description": "余额",
+    "type": "text",
+    "placeholders": {}
+  },
+  "myOrder": "我的订单",
+  "@myOrder": {
+    "description": "我的订单",
+    "type": "text",
+    "placeholders": {}
+  },
+  "commodityDetail": "商品详情",
+  "@commodityDetail": {
+    "description": "商品详情",
+    "type": "text",
+    "placeholders": {}
+  },
+  "features": "产品特色",
+  "@features": {
+    "description": "产品特色",
+    "type": "text",
+    "placeholders": {}
+  },
+  "number": "数量",
+  "@number": {
+    "description": "数量",
+    "type": "text",
+    "placeholders": {}
+  },
+  "addToCart": "加入购物车",
+  "@addToCart": {
+    "description": "加入购物车",
+    "type": "text",
+    "placeholders": {}
+  },
+  "buyNow": "立即购买",
+  "@buyNow": {
+    "description": "立即购买",
+    "type": "text",
+    "placeholders": {}
+  },
+  "advantage": "产品优势",
+  "@advantage": {
+    "description": "产品优势",
+    "type": "text",
+    "placeholders": {}
+  },
+  "selectedSpecification": "已      选",
+  "@selectedSpecification": {
+    "description": "已选规格",
+    "type": "text",
+    "placeholders": {}
+  },
+  "express": "快      递",
+  "@express": {
+    "description": "快递",
+    "type": "text",
+    "placeholders": {}
+  },
+  "originPlace": "产      地",
+  "@originPlace": {
+    "description": "产地",
+    "type": "text",
+    "placeholders": {}
+  },
+  "suggested": "推荐搭配",
+  "@suggested": {
+    "description": "推荐搭配",
+    "type": "text",
+    "placeholders": {}
+  },
+  "searchContent": "输入搜索内容",
+  "@searchContent": {
+    "description": "输入搜索内容",
+    "type": "text",
+    "placeholders": {}
+  },
+  "passwordLogin": "密码登录",
+  "@passwordLogin": {
+    "description": "密码登录",
+    "type": "text",
+    "placeholders": {}
+  },
+  "verificationLogin": "验证码登录",
+  "@verificationLogin": {
+    "description": "验证码登录",
+    "type": "text",
+    "placeholders": {}
+  },
+  "inputPhoneTip": "请输入手机号码",
+  "@inputPhoneTip": {
+    "description": "请输入手机号码提示",
+    "type": "text",
+    "placeholders": {}
+  },
+  "soldNumber": "{howmany,plural, =0{}other{{howmany} 人购买}}",
+  "@soldNumber": {
+    "description": "n人购买",
+    "type": "text",
+    "placeholders": {
+      "howmany": {}
+    }
+  },
+  "understock": "{howmany,plural, =0{库存不足(库存:{howmany})}other{库存不足(库存:{howmany})}}",
+  "@understock": {
+    "description": "库存不足(库存:2)",
+    "type": "text",
+    "placeholders": {
+      "howmany": {}
+    }
+  },
+  "commodityComments": "{howmany,plural, =0{商品评论}other{商品评论({howmany})}}",
+  "@commodityComments": {
+    "description": "商品评论（N）",
+    "type": "text",
+    "placeholders": {
+      "howmany": {}
+    }
+  },
+  "allComments": "{howmany,plural, =0{全部评论}other{全部评论({howmany})}}",
+  "@allComments": {
+    "description": "全部评论（N）",
+    "type": "text",
+    "placeholders": {
+      "howmany": {}
+    }
+  },
+  "quantity": "{howmany,plural, =0{共 {howmany} 件}other{共 {howmany} 件}}",
+  "@quantity": {
+    "description": "共1 件",
+    "type": "text",
+    "placeholders": {
+      "howmany": {}
+    }
+  },
+  "total": "合计",
+  "@total": {
+    "description": "合计",
+    "type": "text",
+    "placeholders": {}
+  },
+  "phoneNumberWrongTip": "请输入手机号码 !",
+  "@phoneNumberWrongTip": {
+    "description": "请输入手机号码 !",
+    "type": "text",
+    "placeholders": {}
+  },
+  "inputPasswordTip": "请输入密码",
+  "@inputPasswordTip": {
+    "description": "请输入密码",
+    "type": "text",
+    "placeholders": {}
+  },
+  "inputVerificationCodeTip": "请输入验证码",
+  "@inputVerificationCodeTip": {
+    "description": "请输入验证码",
+    "type": "text",
+    "placeholders": {}
+  },
+  "sendVerificationCode": "{seconds,plural, =0{获取验证码}other{重新获取({seconds})}}",
+  "@sendVerificationCode": {
+    "description": "获取验证码/重新获取(23)",
+    "type": "text",
+    "placeholders": {
+      "seconds": {}
+    }
+  },
+  "funs": "{howMany,plural, =0{粉丝数：0}other{粉丝数：{howMany}}}",
+  "@funs": {
+    "description": "粉丝数：23",
+    "type": "text",
+    "placeholders": {
+      "howMany": {}
+    }
+  },
+  "inputInviteCodeTip": "请输入邀请码",
+  "@inputInviteCodeTip": {
+    "description": "请输入邀请码",
+    "type": "text",
+    "placeholders": {}
+  },
+  "clickSomethingIsAgreed": "点击{something}即代表同意 ",
+  "@clickSomethingIsAgreed": {
+    "description": "点击登录 即代表同意",
+    "type": "text",
+    "placeholders": {
+      "something": {}
+    }
+  },
+  "login": "登录",
+  "@login": {
+    "description": "登录",
+    "type": "text",
+    "placeholders": {}
+  },
+  "forgotPassword": "忘记密码",
+  "@forgotPassword": {
+    "description": "忘记密码",
+    "type": "text",
+    "placeholders": {}
+  },
+  "confirm": "确认",
+  "@confirm": {
+    "description": "确认",
+    "type": "text",
+    "placeholders": {}
+  },
+  "submit": "提交",
+  "@submit": {
+    "description": "提交",
+    "type": "text",
+    "placeholders": {}
+  },
+  "mine": "我的",
+  "@mine": {
+    "description": "我的",
+    "type": "text",
+    "placeholders": {}
+  },
+  "home": "首页",
+  "@home": {
+    "description": "首页",
+    "type": "text",
+    "placeholders": {}
+  },
+  "shoppingCart": "购物车",
+  "@shoppingCart": {
+    "description": "购物车",
+    "type": "text",
+    "placeholders": {}
+  },
+  "commodityCategory": "商品分类",
+  "@commodityCategory": {
+    "description": "商品分类",
+    "type": "text",
+    "placeholders": {}
+  },
+  "commodity": "商品",
+  "@commodity": {
+    "description": "商品",
+    "type": "text",
+    "placeholders": {}
+  },
+  "viewMore": "查看更多",
+  "@viewMore": {
+    "description": "查看更多",
+    "type": "text",
+    "placeholders": {}
+  },
+  "hotSale": "热卖推荐",
+  "@hotSale": {
+    "description": "热卖推荐",
+    "type": "text",
+    "placeholders": {}
+  },
+  "comprehensiveSort": "综合排序",
+  "@comprehensiveSort": {
+    "description": "综合排序",
+    "type": "text",
+    "placeholders": {}
+  },
+  "ascendSort": "升序",
+  "@ascendSort": {
+    "description": "升序",
+    "type": "text",
+    "placeholders": {}
+  },
+  "descendSort": "降序",
+  "@descendSort": {
+    "description": "降序",
+    "type": "text",
+    "placeholders": {}
+  },
+  "salesVolume": "销量",
+  "@salesVolume": {
+    "description": "销量",
+    "type": "text",
+    "placeholders": {}
+  },
+  "price": "价格",
+  "@price": {
+    "description": "价格",
+    "type": "text",
+    "placeholders": {}
+  },
+  "creditSort": "信用排序",
+  "@creditSort": {
+    "description": "信用排序",
+    "type": "text",
+    "placeholders": {}
+  },
+  "cancel": "取消",
+  "@cancel": {
+    "description": "取消",
+    "type": "text",
+    "placeholders": {}
+  },
+  "edit": "编辑",
+  "@edit": {
+    "description": "编辑",
+    "type": "text",
+    "placeholders": {}
+  },
+  "finshed": "完成",
+  "@finshed": {
+    "description": "完成",
+    "type": "text",
+    "placeholders": {}
+  },
+  "delete": "删除",
+  "@delete": {
+    "description": "删除",
+    "type": "text",
+    "placeholders": {}
+  },
+  "register": "立即注册",
+  "@register": {
+    "description": "立即注册",
+    "type": "text",
+    "placeholders": {}
+  },
+  "registeredToLogin": "已注册，返回登录",
+  "@registeredToLogin": {
+    "description": "已注册，返回登录",
+    "type": "text",
+    "placeholders": {}
+  },
+  "otherLoginMode": "其他登录方式",
+  "@otherLoginMode": {
+    "description": "其他登录方式",
+    "type": "text",
+    "placeholders": {}
+  },
+  "quickLoginByPhoneNumber": "手机一键登录",
+  "@quickLoginByPhoneNumber": {
+    "description": "手机一键登录",
+    "type": "text",
+    "placeholders": {}
+  },
+  "quickLoginByWeChat": "微信登录",
+  "@quickLoginByWeChat": {
+    "description": "微信登录",
+    "type": "text",
+    "placeholders": {}
+  },
+  "userRegisterAgreement": "《用户注册协议》",
+  "@userRegisterAgreement": {
+    "description": "用户注册协议",
+    "type": "text",
+    "placeholders": {}
+  },
+  "chinaMobileCertificationServiceTerms": "《中国移动认证服务条款》",
+  "@chinaMobileCertificationServiceTerms": {
+    "description": "中国移动认证服务条款",
+    "type": "text",
+    "placeholders": {}
+  },
+  "userServiceAgreement": "《用户服务协议》",
+  "@userServiceAgreement": {
+    "description": "用户服务协议",
+    "type": "text",
+    "placeholders": {}
+  }
+}
