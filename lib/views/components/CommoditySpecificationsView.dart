@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_etu_remake/AppDefaultStyle.dart';
 import 'package:flutter_etu_remake/WidgetComponents.dart';
 import 'package:flutter_etu_remake/core/NetworkManager.dart';
 import 'package:flutter_etu_remake/l10n/localization_intl.dart';
@@ -22,7 +23,7 @@ class CommoditySpecificationsView extends StatefulWidget {
 
 class CommoditySpecificationsViewState
     extends State<CommoditySpecificationsView> {
-  final double imageSize = 100;
+  final double imageSize = 80;
 
   @override
   void initState() {
@@ -44,20 +45,24 @@ class CommoditySpecificationsViewState
     return Container(
       child: Column(children: [
         Container(
-          margin: const EdgeInsets.all(10),
+          margin: const EdgeInsets.symmetric(vertical:10,horizontal:10),
           child: commodityListTitle(),
         ),
-        CommoditySpecificationsChoice(
+      WidgetComponents.Line(),
+         Container(
+          margin: const EdgeInsets.symmetric(vertical:5,horizontal:10),
+          child:CommoditySpecificationsChoice(
           specifications: widget.data.specifications,
           onChanged: _onSpecificationChanged,
-        ),
+        )),
+
         Container(
-          margin: const EdgeInsets.all(10),
+          margin: const EdgeInsets.symmetric(vertical:5,horizontal:10),
           child: counter(),
         ),
         Expanded(child: SizedBox()),
         Container(
-          margin: EdgeInsets.all(10),
+          margin: const EdgeInsets.symmetric(vertical:5,horizontal:10),
           child: WidgetComponents.CommonButton(
               AppLocalizations.of(context).confirm,
               style: TextStyle(color: Colors.white),
@@ -75,7 +80,7 @@ class CommoditySpecificationsViewState
         Container(
           child: Text(
             AppLocalizations.of(context).number,
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+            style: TextStyle(fontSize: AppDefaultStyle.SubtitleFontSize, fontWeight: FontWeight.w500),
           ),
         ),
         Counter(
@@ -116,12 +121,12 @@ class CommoditySpecificationsViewState
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
               WidgetComponents.MeonyLabel(widget.data?.sellingPrice ?? 0,
-                  originalPrice: widget.data?.originalPrice ?? 0, scale: 2),
+                  originalPrice: widget.data?.originalPrice ?? 0, scale: 1.5),
               Container(
                   child: Text(
                 widget.data.describe,
                 maxLines: 2,
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: AppDefaultStyle.SubtitleFontSize, fontWeight: FontWeight.bold),
                 overflow: TextOverflow.ellipsis,
               ))
               //  Expanded(child: Text(widget.data.describe,maxLines: 2,overflow: TextOverflow.ellipsis,))
@@ -144,14 +149,18 @@ class CommoditySpecificationsViewState
     }  
   }
 
-  void _onSpecificationChanged(Map<String, int> p1) {
+  void _onSpecificationChanged(Map<String, int> selectedSprecifications) {
     if (widget.listener == null) return;
 
-    Map<String, String> map = {};
+    Map<String, String> map = {};  
 
-    p1.forEach((key, value) {
+    selectedSprecifications.forEach((key, value) {
+      if(value>=0)
       map.putIfAbsent(key, () => widget.data.specifications[key][value]);
     });
+
+    if(map.length < widget.data.specifications.length) return;
+
     widget.listener.onSpecificationChanged(map);
 
     NetworkManager.instance

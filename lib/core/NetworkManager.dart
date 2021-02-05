@@ -17,6 +17,7 @@ import 'package:flutter_etu_remake/models/ShoppingCartDetail.dart';
 import 'package:flutter_etu_remake/models/ShoppingOrder.dart';
 import 'package:flutter_etu_remake/models/StoreDetial.dart';
 import 'package:flutter_etu_remake/models/User.dart';
+import 'package:flutter_etu_remake/models/UserBalance.dart';
 import 'package:flutter_etu_remake/models/WechatPayment.dart';
 
 class HttpUtil {
@@ -164,7 +165,7 @@ class NetworkManager {
         msg = jsonMap["message"];
 
         if (jsonMap["code"] == 200)
-          result = CommoditySpecificationPrice.fromJson(jsonMap["data"]);
+          result = CommoditySpecificationPrice.fromJson(jsonMap["data"]??"");
       } else {
         msg = "网络异常:${response.statusCode}";
       }
@@ -174,6 +175,42 @@ class NetworkManager {
 
     if(msg.isNotEmpty) Debug.error(msg);
 
+    return result;
+  }
+
+ //用户钱包
+  Future<UserBalance> userBalance() async {
+    UserBalance result = null;
+
+    String url = "$server/market/app/wallet/balance";
+
+    print(url);
+
+    String msg = "";
+
+    try {
+      var dio = Dio();
+      dio.options.headers = headers;
+
+      var response = await dio.get(url);
+
+      if (response.statusCode == 200) {
+        Map jsonMap = response.data as Map;
+
+         Debug.log(jsonMap);
+
+        msg = jsonMap["message"];
+
+        if (jsonMap["code"] == 200)
+          result = UserBalance.fromJson(jsonMap["data"]);
+      } else {
+        msg = "网络异常:${response.statusCode}";
+      }
+    } catch (e) {
+      msg = e;
+    }
+
+    Debug.log(msg);
     return result;
   }
 

@@ -132,7 +132,7 @@ static  Widget ImageButton(String image, String title,
     return Container(
         padding: padding,
         alignment: Alignment.center,
-        margin: EdgeInsets.fromLTRB(3, 1, 3, 1),
+        margin:const EdgeInsets.symmetric(vertical:1,horizontal:3),
         height:height ,
         width:width,
         constraints: BoxConstraints(minWidth:minWidth,minHeight: minHeight),
@@ -140,7 +140,7 @@ static  Widget ImageButton(String image, String title,
             color: bgColor,
             borderRadius: BorderRadius.circular(borderRadius),
             border: Border.all(color: borderColor)),
-        child: Text(content, style: style));
+        child: Text(content,textAlign: TextAlign.center, style: style));
   }
 
 

@@ -9,7 +9,7 @@ part of 'PaymentDetail.dart';
 PaymentDetail _$PaymentDetailFromJson(Map<String, dynamic> json) {
   return PaymentDetail()
     ..orderNo = json['orderNo'] as String
-    ..payAmount = double.parse(json['payAmount']?.toString()??'0')
+    ..payAmount = (json['payAmount'] as num)?.toDouble()
     ..date = json['date'] as String;
 }
 

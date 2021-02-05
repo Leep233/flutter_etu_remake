@@ -1,12 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_etu_remake/AppDefaultStyle.dart';
+import 'package:flutter_etu_remake/core/NetworkManager.dart';
 import 'package:flutter_etu_remake/core/UIManager.dart';
 import 'package:flutter_etu_remake/viewmodels/TransactionDetailItemViewModel.dart';
+import 'package:flutter_etu_remake/viewmodels/UserBalancePageViewModel.dart';
 
-// ignore: must_be_immutable
-class UserBalancePage extends StatelessWidget {
+import 'package:flutter/material.dart';
 
-  double price = 99999;
+class UserBalancePage extends StatefulWidget {
+  UserBalancePage({Key key}) : super(key: key);
+
+  @override
+  State<StatefulWidget> createState() => UserBalancePageState();
+}
+
+class UserBalancePageState extends State<UserBalancePage> {
+  UserBalancePageViewModel _viewModel;
+
+  @override
+  void initState() {
+    super.initState();
+    NetworkManager.instance.userBalance().then((value) {
+      _viewModel = UserBalancePageViewModel.transform(value);
+      if (mounted) setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
+  void deactivate() {
+    super.deactivate();
+  }
 
   Decoration get buttonDecoration {
     return BoxDecoration(
@@ -62,7 +90,7 @@ class UserBalancePage extends StatelessWidget {
 
   Widget _$BuildBody(BuildContext context) {
     return Column(children: [
-      Text(price?.toStringAsFixed(2),
+      Text(_viewModel?.balance ?? "0.00",
           style: TextStyle(
               color: Colors.white, fontSize: 32, fontWeight: FontWeight.bold)),
       Text('账户余额', style: TextStyle(color: Colors.white)),
@@ -74,7 +102,8 @@ class UserBalancePage extends StatelessWidget {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30)),
               textColor: Colors.orange[800],
-              onPressed: ()=>UIManager.instance.toPage(context, UIDef.withdrawal),
+              onPressed: () =>
+                  UIManager.instance.toPage(context, UIDef.withdrawal),
               child: Text(
                 "提现",
                 style: TextStyle(fontSize: 16),
@@ -99,7 +128,8 @@ class UserBalancePage extends StatelessWidget {
                           style: AppDefaultStyle.titleStyle01,
                         ),
                         TextButton(
-                            onPressed: ()=>UIManager.instance.toPage(context, UIDef.changeDetail),
+                            onPressed: () => UIManager.instance
+                                .toPage(context, UIDef.changeDetail),
                             child: Row(children: [
                               Text(
                                 "查看全部",
@@ -116,38 +146,44 @@ class UserBalancePage extends StatelessWidget {
                   ),
                   Expanded(
                       child: ListView.builder(
-                          itemBuilder: _$TransactionDetailsItem, itemCount: 10))
+                          itemBuilder: (context, index) =>
+                              TransactionDetailItem(
+                                data: _viewModel?.details[index],
+                              ),
+                          itemCount: _viewModel?.details?.length ?? 0))
                 ])))),
       )
     ]);
   }
-
- 
-
-  Widget _$TransactionDetailsItem(BuildContext context, int index) {
-
-    return TransactionDetailItem(data:TransactionDetailItemViewModel(number:99,title: "好友下单",date: '2020-20-20 20:20:20') ,);
-  }
- 
 }
 
-class TransactionDetailItem extends StatelessWidget{
+// ignore: must_be_immutable
 
-final TransactionDetailItemViewModel data;
+class TransactionDetailItem extends StatelessWidget {
+  final TransactionDetailItemViewModel data;
 
-TransactionDetailItem({this.data});
+  TransactionDetailItem({this.data});
 
- @override
-Widget build(BuildContext context) {
+  @override
+  Widget build(BuildContext context) {
+    double number = data?.number ?? 0;
 
-  double number = data?.number??0;
-
-
-    return ListTile(  
-        trailing:   Text(number?.toStringAsFixed(2),style: TextStyle(fontSize:20,color:number<0?Colors.black:Colors.red,fontWeight: FontWeight.bold),), 
-        onTap: null,
-        title:Text(data?.title??"",style:const TextStyle(color: Colors.black,fontSize: 16)),
-
-        subtitle:  Text(data?.date??"",style:const TextStyle(color: Colors.grey,fontSize: 14,)),);
-     }
+    return ListTile(
+      trailing: Text(
+        number?.toStringAsFixed(2),
+        style: TextStyle(
+            fontSize: 20,
+            color: number < 0 ? Colors.black : Colors.red,
+            fontWeight: FontWeight.bold),
+      ),
+      onTap: null,
+      title: Text(data?.title ?? "",
+          style: const TextStyle(color: Colors.black, fontSize: 16)),
+      subtitle: Text(data?.date ?? "",
+          style: const TextStyle(
+            color: Colors.grey,
+            fontSize: 14,
+          )),
+    );
+  }
 }

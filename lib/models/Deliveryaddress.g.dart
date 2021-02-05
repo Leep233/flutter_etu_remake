@@ -8,7 +8,7 @@ part of 'Deliveryaddress.dart';
 
 Deliveryaddress _$DeliveryaddressFromJson(Map<String, dynamic> json) {
   return Deliveryaddress()
-    ..id = json['id']?.toString()
+    ..id = json['id'] as String
     ..consignee = json['consignee'] as String
     ..consigneePhone = json['consigneePhone'] as String
     ..province = json['province'] as String

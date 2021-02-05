@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_etu_remake/AppDefaultStyle.dart';
 import 'package:flutter_etu_remake/views/components/RadioGroup.dart';
 
 ///商品规格选择
@@ -24,12 +25,13 @@ class CommoditySpecificationsChoiceState
     super.initState();
     selected.clear();
 
+
     widget.specifications.forEach((key, value) {
-      selected.putIfAbsent(key, () => 0);
+      selected.putIfAbsent(key, () => -1);
     });
 
-        widget?.onChanged?.call(selected);
-
+    widget?.onChanged?.call(selected);
+  
   }
 
   @override
@@ -52,7 +54,14 @@ class CommoditySpecificationsChoiceState
 
     widget.specifications.forEach((key, value) {
       childs.add(_$SpecificationItem(value,
-          title: Container(margin: const EdgeInsets.symmetric(vertical:10),child: Text(key,style: TextStyle(fontSize:18,fontWeight: FontWeight.bold),)),
+          title: Container(
+              margin: const EdgeInsets.symmetric(vertical: 5),
+              child: Text(
+                key,
+                style: TextStyle(
+                    fontSize: AppDefaultStyle.SubtitleFontSize,
+                    fontWeight: FontWeight.w500),
+              )),
           value: selected[key], onChanged: (index) {
         if (mounted) {
           setState(() {
@@ -66,10 +75,14 @@ class CommoditySpecificationsChoiceState
   }
 
   Widget _$SpecificationItem(List<String> specifications,
-      {Widget title, int value = 0, void Function(int) onChanged}) {
+      {Widget title, int value, void Function(int) onChanged}) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       title,
-      RadioGroup(value: value, fontSize: 16,selection: specifications, onChanged: onChanged)
+      RadioGroup(
+          value: value,
+          fontSize: 12,
+          selection: specifications,
+          onChanged: onChanged)
     ]);
   }
 }

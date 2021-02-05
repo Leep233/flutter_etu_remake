@@ -86,7 +86,8 @@ class CommodityDetailPageState extends State<CommodityDetailPage>
         backgroundColor: Colors.white,
         title: Text(
           local.commodityDetail,
-          style: TextStyle(color: Colors.black,fontSize: AppDefaultStyle.AppTitleFontSize),
+          style: TextStyle(
+              color: Colors.black, fontSize: AppDefaultStyle.AppTitleFontSize),
         ),
         leading: IconButton(
           icon: Icon(Icons.chevron_left, color: Colors.black),
@@ -149,14 +150,13 @@ class CommodityDetailPageState extends State<CommodityDetailPage>
         Container(
             margin: const EdgeInsets.fromLTRB(8, 0, 8, 0),
             child: _$DetailsContent(_viewModel?.details)),
-
         Container(
             alignment: Alignment.center,
             margin: EdgeInsets.fromLTRB(0, 0, 0, 45),
             child: Text(
-              "----底部----",
+              "-------- 底部 --------",
               style: TextStyle(color: Colors.grey, fontSize: 14),
-            )),
+            ))
       ],
     ));
   }
@@ -177,7 +177,9 @@ class CommodityDetailPageState extends State<CommodityDetailPage>
               _viewModel?.title ?? "",
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(fontSize: AppDefaultStyle.TitleFontSize, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  fontSize: AppDefaultStyle.TitleFontSize,
+                  fontWeight: FontWeight.bold),
             ),
           ),
           Container(
@@ -185,7 +187,9 @@ class CommodityDetailPageState extends State<CommodityDetailPage>
               _viewModel?.subTitle ?? "",
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(fontSize: AppDefaultStyle.SubtitleFontSize, color: Colors.grey),
+              style: TextStyle(
+                  fontSize: AppDefaultStyle.SubtitleFontSize,
+                  color: Colors.grey),
             ),
           )
         ]),
@@ -198,8 +202,12 @@ class CommodityDetailPageState extends State<CommodityDetailPage>
     //规格选择
     Widget specification = Row(
       children: [
-        Container(margin: EdgeInsets.only(right: 5),
-          child: Text(AppLocalizations.of(context).selectedSpecification,style: titleStyle,),
+        Container(
+          margin: EdgeInsets.only(right: 5),
+          child: Text(
+            AppLocalizations.of(context).selectedSpecification,
+            style: titleStyle,
+          ),
           width: titleWidth,
         ),
         Expanded(
@@ -218,6 +226,10 @@ class CommodityDetailPageState extends State<CommodityDetailPage>
                     ])))
       ],
     );
+
+    String postage =
+        double.tryParse(_viewModel?.postage ?? '0')?.toString() ?? "免运费";
+
     //快递
     Widget express = Row(
       children: [
@@ -241,7 +253,7 @@ class CommodityDetailPageState extends State<CommodityDetailPage>
                         children: [
                           Expanded(
                               child: Text(
-                            _viewModel?.postage ?? "",
+                            postage,
                             style: lableStyle,
                           )),
                           Icon(Icons.chevron_right, color: Colors.grey)
@@ -249,7 +261,8 @@ class CommodityDetailPageState extends State<CommodityDetailPage>
                     Text(
                       "配送至:${_viewModel?.address ?? ""}",
                       style: const TextStyle(color: Colors.grey, fontSize: 14),
-                    )],
+                    )
+                  ],
                 )))
       ],
     );
@@ -364,7 +377,9 @@ class CommodityDetailPageState extends State<CommodityDetailPage>
         AppLocalizations.of(context)
             .commodityComments(_viewModel?.comments?.length ?? 0),
         style: TextStyle(
-            fontSize: AppDefaultStyle.TitleFontSize, color: Colors.black, fontWeight: FontWeight.w600),
+            fontSize: AppDefaultStyle.TitleFontSize,
+            color: Colors.black,
+            fontWeight: FontWeight.w600),
       ),
       TextButton(
         child: Row(
@@ -403,18 +418,32 @@ class CommodityDetailPageState extends State<CommodityDetailPage>
   }
 
   Widget _$DetailsContent(String detailsHtml) {
-    Widget html = Html(
-      data: detailsHtml,
-      onImageError: (a1, a2) {},
-      //Optional parameters:
-      onLinkTap: (url) {
-        // open url in a webview
-      },
-      onImageTap: (src) {
-        // Display the image in large form.
-      },
-    );
-    return html;
+    Widget content = new SizedBox();
+
+    if (detailsHtml?.isNotEmpty) {
+      Widget title = Container(
+          alignment: Alignment.center,
+          child: Text(
+            "-------- 商品详情 --------",
+            style: TextStyle(color: Colors.grey, fontSize: 14),
+          ));
+
+      Widget html = Html(
+        data: detailsHtml,
+        onImageError: (a1, a2) {},
+        //Optional parameters:
+        onLinkTap: (url) {
+          // open url in a webview
+        },
+        onImageTap: (src) {
+          // Display the image in large form.
+        },
+      );
+
+      content = Column(children: [title, html]);
+    }
+
+    return content;
   }
 
   ///购买
@@ -520,7 +549,8 @@ class CommodityDetailPageState extends State<CommodityDetailPage>
   }
 
   void _onClickMoreComment() {
-    UIManager.instance.toPage(context, UIDef.commentList,arguments: _viewModel?.productNo);
+    UIManager.instance
+        .toPage(context, UIDef.commentList, arguments: _viewModel?.productNo);
   }
 
   void _onClickStoreBtn() {
@@ -542,8 +572,6 @@ class CommodityDetailPageState extends State<CommodityDetailPage>
 
   @override
   void onPressedConfirm(Object arg) {
-    // TODO: implement onPressedConfirm
-
     CommoditySpecificationsViewModel data =
         arg as CommoditySpecificationsViewModel;
 

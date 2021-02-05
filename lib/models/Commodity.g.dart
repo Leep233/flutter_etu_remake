@@ -8,7 +8,7 @@ part of 'Commodity.dart';
 
 Commodity _$CommodityFromJson(Map<String, dynamic> json) {
   return Commodity()
-    ..productNo = json['productNo']?.toString()
+    ..productNo = json['productNo'] as String
     ..merchantId = json['merchantId'] as String
     ..shopName = json['shopName'] as String
     ..isHot = json['isHot'] as int

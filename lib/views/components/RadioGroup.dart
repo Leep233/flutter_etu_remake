@@ -19,7 +19,7 @@ class RadioGroup extends StatefulWidget {
     Key key,   
     this.fontSize=14,
     this.selection,
-     this.value = 0,
+     this.value = -1,
     this.onChanged,
   }) : super(key: key);
 
@@ -45,15 +45,15 @@ class RadioGroupState extends State<RadioGroup> {
   }
 
   Widget _selectedWidget(String title) {
-    return WidgetComponents.Tips(title,padding: const EdgeInsets.symmetric(vertical: 0.5,horizontal: 3),minWidth: 50,borderRadius: 5,
+    return WidgetComponents.Tips(title,padding: const EdgeInsets.symmetric(vertical: 0.5,horizontal: 3),minWidth: 45,borderRadius: 5,
         borderColor: Colors.deepOrangeAccent,bgColor: Colors.grey[100],
         style: TextStyle(fontSize: widget?.fontSize, color: Colors.deepOrangeAccent));
   }
 
   Widget _unselectedWidget(String title) {
-    return WidgetComponents.Tips(title,padding: const EdgeInsets.symmetric(vertical: 0.5,horizontal: 3),minWidth: 50,borderRadius: 5,
-        borderColor: Colors.grey,bgColor: Colors.grey[100],
-        style: TextStyle(fontSize: widget?.fontSize, color: Colors.grey));
+    return WidgetComponents.Tips(title,padding: const EdgeInsets.symmetric(vertical: 0.5,horizontal: 3),minWidth: 45,borderRadius: 5,
+        borderColor: Colors.transparent,bgColor: Colors.grey[300],
+        style: TextStyle(fontSize: widget?.fontSize, color: Colors.grey[700]));
   }
 
   @override
@@ -66,14 +66,14 @@ class RadioGroupState extends State<RadioGroup> {
       Widget child = Container(
         child: SelectorWidget(
           groupValue: element,
-          value:widget.selection[widget.value] ,
+          value:(widget.value>=0)? widget.selection[widget.value] :"",
           onChanged: (value) {    
             widget.onChanged?.call(i); 
           },
           selected: _selectedWidget(element),
           unselected: _unselectedWidget(element),
         ),
-        margin: EdgeInsets.fromLTRB(0, 0, 5, 0),
+        margin: const EdgeInsets.symmetric(horizontal:1.5)
       );
 
       list.add(child);
