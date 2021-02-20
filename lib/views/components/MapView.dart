@@ -1,7 +1,10 @@
+import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bmflocation/flutter_baidu_location.dart';
+import 'package:flutter_bmflocation/flutter_baidu_location_android_option.dart';
+import 'package:flutter_bmflocation/flutter_baidu_location_ios_option.dart';
 import 'package:flutter_bmfmap/BaiduMap/map/bmf_map_controller.dart';
 import 'package:flutter_bmfmap/BaiduMap/map/bmf_map_view.dart';
 import 'package:flutter_bmfmap/BaiduMap/models/bmf_map_options.dart';
@@ -10,10 +13,12 @@ import 'package:flutter_bmfbase/BaiduMap/bmfmap_base.dart'
 
 import 'package:flutter_bmfbase/BaiduMap/bmfmap_base.dart';
 import 'package:flutter_bmfmap/BaiduMap/models/bmf_mappoi.dart';
+import 'package:flutter_bmfmap/BaiduMap/models/bmf_userlocation.dart';
+import 'package:flutter_etu_remake/Debug.dart';
+import 'package:flutter_etu_remake/Global.dart';
 
 //百度地图
 class MapView extends StatefulWidget {
-
   MapView({Key key}) : super(key: key);
 
   @override
@@ -21,7 +26,6 @@ class MapView extends StatefulWidget {
 }
 
 class MapViewState extends State<MapView> {
-
   Size screenSize;
 
   BMFMapController _mapController;
@@ -37,6 +41,49 @@ class MapViewState extends State<MapView> {
   @override
   void initState() {
     super.initState();
+
+    Global.startLocation((result) {
+      //Debug.log(result);
+      if(result.errorCode==0){
+  onPositionChangedCallback(result);
+      }else{
+        Debug.error("${result.errorCode}:${result.errorInfo}");
+      }
+    
+    });
+  }
+
+  void onPositionChangedCallback(BaiduLocation position) {
+    String address =
+        "${position.country}${position.province}${position.city}${position.district}${position.street}";
+
+    BMFCoordinate coordinate =BMFCoordinate(position.latitude, position.longitude);
+
+    BMFLocation location = BMFLocation(
+        coordinate: coordinate,
+        altitude: 0,
+        horizontalAccuracy: 5,
+        verticalAccuracy: -1.0,
+        speed: -1.0,
+        course: -1.0);
+
+    BMFUserLocation userLocation = BMFUserLocation(location: location,);
+
+    _mapController?.updateLocationData(userLocation);
+
+    BMFUserlocationDisplayParam displayParam = BMFUserlocationDisplayParam(
+        locationViewOffsetX: 0,
+        locationViewOffsetY: 0,
+        accuracyCircleFillColor: Colors.red,
+        accuracyCircleStrokeColor: Colors.blue,
+        isAccuracyCircleShow: true,
+        locationViewImage: 'assets/images/point.png',
+        locationViewHierarchy:
+            BMFLocationViewHierarchy.LOCATION_VIEW_HIERARCHY_BOTTOM);
+
+    _mapController?.updateLocationViewWithParam(displayParam);
+
+    print("定位回调:${address}");
   }
 
   @override
@@ -46,11 +93,11 @@ class MapViewState extends State<MapView> {
 
   @override
   void deactivate() {
-    super.deactivate(); 
+    Global.stopLocation();
+    super.deactivate();
   }
 
   void onBMFMapCreated(BMFMapController controller) {
-
     _mapController = controller;
 
     _mapController?.showUserLocation(true);
